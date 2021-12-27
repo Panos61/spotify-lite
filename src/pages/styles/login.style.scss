@@ -1,0 +1,39 @@
+#login-layout {
+	.header {
+		display: none;
+	}
+
+	text-align: center;
+	padding: 0;
+
+	img {
+		width: 40%;
+	}
+
+	a,
+	h3 {
+		margin-top: 18vh;
+	}
+
+	h3 {
+		color: white;
+	}
+
+	a {
+		position: relative;
+		top: 20px;
+		padding: 15px 90px;
+		background-color: #15883e;
+		border-radius: 99px;
+		border: none;
+		color: white;
+		font-weight: bold;
+		text-decoration: none;
+		font-size: 15px;
+		transition: 0.2s ease-in-out;
+	}
+
+	a:hover {
+		background-color: #1db954;
+	}
+}

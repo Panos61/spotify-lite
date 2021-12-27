@@ -1,0 +1,30 @@
+body {
+	background-color: #040404;
+	//background: #121212;
+	//background-image: linear-gradient((rgb(68, 69, 124), (#121212), (#121212)));
+	color: white;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.left-wrapper {
+	width: 13%;
+	float: left;
+	position: fixed;
+	margin: 0;
+	padding: 0;
+}
+
+.right-wrapper {
+	right: 0;
+	float: right;
+	width: 87%;
+	overflow-y: none;
+	position: relative;
+	height: calc(100vh - 0px);
+}
+
+.inner-wrapper {
+	margin-top: 5%;
+}
