@@ -7,6 +7,8 @@ import {
 	GET_NEWALBUMS_ERROR,
 	GET_FEATUREDPLAYLISTS_SUCCESS,
 	GET_FEATUREDPLAYLISTS_ERROR,
+	GET_TOP_TRACKS_ERROR,
+	GET_TOP_TRACKS_SUCCESS,
 } from './types';
 import SpotifyWebApi from 'spotify-web-api-js';
 import { setAccessToken } from '../../utils/spotify_auth';
@@ -77,6 +79,24 @@ export const getFeaturedPlaylists = () => {
 			});
 		} catch (error) {
 			dispatch({ type: GET_FEATUREDPLAYLISTS_ERROR, payload: error });
+		}
+	};
+};
+
+export const getMyTopTracks = () => {
+	return async (dispatch: any) => {
+		try {
+			await setAccessToken();
+
+			spotifyApi.getMyTopTracks({ limit: 6 }).then((playlist) => {
+				dispatch({
+					type: GET_TOP_TRACKS_SUCCESS,
+					payload: playlist,
+				});
+				console.log('My Top Tracks: ', playlist);
+			});
+		} catch (error) {
+			dispatch({ type: GET_TOP_TRACKS_ERROR, payload: error });
 		}
 	};
 };

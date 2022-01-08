@@ -23,9 +23,9 @@ export const setAuth = () => {
 	return (dispatch: any) => {
 		try {
 			storeToken();
-			dispatch({ AUTH_SUCCESS });
+			dispatch({ type: AUTH_SUCCESS });
 		} catch (error) {
-			dispatch({ type: AUTH_ERROR, payload: JSON.stringify(error) });
+			dispatch({ type: AUTH_ERROR, payload: error });
 		}
 	};
 };

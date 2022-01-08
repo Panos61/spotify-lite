@@ -7,6 +7,8 @@ import {
 	GET_NEWALBUMS_ERROR,
 	GET_FEATUREDPLAYLISTS_ERROR,
 	GET_FEATUREDPLAYLISTS_SUCCESS,
+	GET_TOP_TRACKS_SUCCESS,
+	GET_TOP_TRACKS_ERROR,
 } from './types';
 import { AnyAction } from 'redux';
 
@@ -15,6 +17,7 @@ export const initialState = {
 	artists: [],
 	albums: [],
 	playlists: [],
+	topPlaylist: [],
 };
 
 export const userPlaylists = (state = initialState, action: AnyAction) => {
@@ -42,6 +45,12 @@ export const userPlaylists = (state = initialState, action: AnyAction) => {
 				playlists: action.payload.playlists.items,
 			};
 
+		case GET_TOP_TRACKS_SUCCESS:
+			return {
+				...state,
+				topPlaylist: action.payload.topPlaylist,
+			};
+
 		case GET_RECENTLY_PLAYED_ERROR:
 			return {
 				...state,
@@ -63,6 +72,11 @@ export const userPlaylists = (state = initialState, action: AnyAction) => {
 			return {
 				...state,
 				playlists: action.payload,
+			};
+		case GET_TOP_TRACKS_ERROR:
+			return {
+				...state,
+				topPlaylist: action.payload,
 			};
 
 		default:

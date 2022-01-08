@@ -2,13 +2,16 @@ import './styles/dashboard.style.scss';
 import RecentPlaylist from '../components/RecentPlaylist';
 import TopArtists from '../components/TopArtists';
 import Categories from '../components/Albums';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import FeaturedPlaylists from '../components/FeaturedPlaylists';
+import Library from '../components/Library';
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
 	return (
 		<>
+			<h2 style={{ paddingTop: '2%' }}>Playlists</h2>
+			<div style={{ display: 'flex', gap: '2.5rem' }}>
+				<Library />
+			</div>
 			<h2 style={{ paddingTop: '30px' }}>Recently Played</h2>
 			<div className='dashboard-cards-layout'>
 				<RecentPlaylist />
@@ -25,14 +28,6 @@ const Dashboard: React.FC = () => {
 			<div className='dashboard-cards-layout'>
 				<FeaturedPlaylists />
 			</div>
-
-			<p>.</p>
-			<p>.</p>
-			<p>.</p>
-			<p>.</p>
-			<p>.</p>
-			<p>.</p>
-			<p>.</p>
 		</>
 	);
 };

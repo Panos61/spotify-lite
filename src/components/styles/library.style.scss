@@ -1,0 +1,19 @@
+.library-card {
+	color: white !important;
+	text-decoration: none !important;
+
+	background-color: #665fa9 !important;
+	width: 400px;
+	height: 230px;
+}
+
+.library-card:hover {
+	background-color: #4d459b !important;
+	transition: 0.1s ease-in-out;
+}
+
+.library-card-content {
+	margin-top: 25%;
+	margin-left: 5%;
+	justify-content: flex-start;
+}

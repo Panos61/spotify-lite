@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { setMe, logout } from '../features/auth/actions';
 import { RootState } from '../store';
 import Menu from '@mui/material/Menu';
@@ -96,8 +97,11 @@ const Logout: React.FC = () => {
 				transformOrigin={{ horizontal: 'right', vertical: 'top' }}
 				anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
 			>
-				<MenuItem>Profile</MenuItem>
-				<MenuItem>My account</MenuItem>
+				<MenuItem>
+					<Link to='/user' style={{ textDecoration: 'none', color: 'black' }}>
+						Profile
+					</Link>
+				</MenuItem>
 				<MenuItem onClick={handleLogout}>Logout</MenuItem>
 			</Menu>
 		</>

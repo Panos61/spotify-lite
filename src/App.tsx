@@ -1,16 +1,30 @@
 import './App.scss';
-import { useDispatch } from 'react-redux';
-import { Route, Routes, useLocation, Location } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+	Route,
+	Routes,
+	useLocation,
+	Location,
+	useRoutes,
+} from 'react-router-dom';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
+import Profile from './pages/Profile';
 import Header from './components/Header';
 import Sidenav from './components/Sidebar';
 import { setAuth } from './features/auth/actions';
-import Library from './pages/Library';
+import PrivateRoute from './utils/PrivateRoute';
+import SavedTracks from './pages/SavedTracks';
+import NotFound from './pages/NotFound';
+import { RootState } from './store';
 
 const App: React.FC = () => {
 	const dispatch = useDispatch();
 	dispatch(setAuth());
+
+	// const currentState = useSelector((state: RootState) => state);
+
+	// const { isAuthenticated } = currentState.authReducer;
 
 	let history: Location | string = useLocation();
 
@@ -25,11 +39,16 @@ const App: React.FC = () => {
 			<div className='right-wrapper'>
 				<div className='inner-wrapper'>
 					<Header />
-
-					<Routes>
-						<Route path='/' element={<Dashboard />} />
-						<Route path='/library' element={<Library />} />
-					</Routes>
+					<div className='inner-wrapper-content'>
+						<Routes>
+							{/* <Route element={<PrivateRoute />}> */}
+							<Route path='/' element={<Dashboard />} />
+							<Route path='/collection/tracks' element={<SavedTracks />} />
+							<Route path='/user' element={<Profile />} />
+							<Route path='*' element={<NotFound />} />
+							{/* </Route> */}
+						</Routes>
+					</div>
 				</div>
 			</div>
 		</>

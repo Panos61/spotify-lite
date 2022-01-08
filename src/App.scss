@@ -1,6 +1,5 @@
 body {
-	background-color: #040404;
-	//background: #121212;
+	background-color: black;
 	//background-image: linear-gradient((rgb(68, 69, 124), (#121212), (#121212)));
 	color: white;
 	margin: 0;
@@ -25,6 +24,7 @@ body {
 	height: calc(100vh - 0px);
 }
 
-.inner-wrapper {
-	margin-top: 5%;
+.inner-wrapper-content {
+	margin-top: 7%;
+	margin-left: 2%;
 }

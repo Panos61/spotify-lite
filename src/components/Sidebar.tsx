@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './styles/sidenav.style.scss';
 import Home from '@material-ui/icons/Home';
 import Search from '@material-ui/icons/Search';
@@ -20,13 +20,13 @@ const Sidenav = () => {
 			</div>
 			<ul>
 				<li>
-					<Home /> Home
+					<Home /> <Link to='/'>Home</Link>
 				</li>
 				<li>
 					<Search /> Search
 				</li>
 				<li>
-					<Library /> Your Library
+					<Library /> <Link to='/collection/tracks'>Your Library</Link>
 				</li>
 			</ul>
 		</div>
