@@ -1,0 +1,7 @@
+export const AUTH_SUCCESS = 'AUTH_SUCCESS';
+export const AUTH_ERROR = 'AUTH_ERROR';
+
+export const SET_USER_SUCCESS = 'SET_USER_SUCCESS';
+export const SET_USER_ERROR = 'SET_USER_ERROR';
+
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';

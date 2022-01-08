@@ -1,0 +1,30 @@
+// @LIBRARY & PROFILE STYLES
+.saved-top-wrapper {
+	margin: 0;
+	padding: 0;
+	background-color: rgb(67, 47, 126);
+	display: flex;
+	gap: 2%;
+	color: white;
+}
+
+.saved-top-image {
+	background-color: rgb(78, 47, 176);
+	padding: 40px 40px;
+}
+
+.saved-top-title {
+	display: flex;
+	flex-direction: column;
+	margin-top: 7vh;
+}
+
+// @PROFILE STYLE
+.profile-content {
+	margin-top: 5vh;
+}
+
+.profile-cards {
+	display: flex;
+	gap: 2vw;
+}
