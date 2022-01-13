@@ -23,7 +23,7 @@ const Sidenav = () => {
 					<Home /> <Link to='/'>Home</Link>
 				</li>
 				<li>
-					<Search /> Search
+					<Search /> <Link to='/search'>Search</Link>
 				</li>
 				<li>
 					<Library /> <Link to='/collection/tracks'>Your Library</Link>

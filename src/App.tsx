@@ -16,6 +16,7 @@ import { setAuth } from './features/auth/actions';
 import PrivateRoute from './utils/PrivateRoute';
 import SavedTracks from './pages/SavedTracks';
 import NotFound from './pages/NotFound';
+import Search from './pages/Search';
 import { RootState } from './store';
 
 const App: React.FC = () => {
@@ -43,6 +44,7 @@ const App: React.FC = () => {
 						<Routes>
 							{/* <Route element={<PrivateRoute />}> */}
 							<Route path='/' element={<Dashboard />} />
+							<Route path='/search' element={<Search />} />
 							<Route path='/collection/tracks' element={<SavedTracks />} />
 							<Route path='/user' element={<Profile />} />
 							<Route path='*' element={<NotFound />} />

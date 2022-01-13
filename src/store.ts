@@ -3,6 +3,7 @@ import { authReducer } from './features/auth/reducer';
 import { userPlaylists } from './features/user-playlists/reducer';
 import { library } from './features/library/reducer';
 import { playerReducer } from './features/player/reducer';
+import { searchReducer } from './features/search/reducer';
 
 const store = configureStore({
 	reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
 		userPlaylists,
 		library,
 		playerReducer,
+		searchReducer,
 	},
 });
 

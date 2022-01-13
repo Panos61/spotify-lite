@@ -44,10 +44,6 @@ const SavedList = () => {
 								setPlayerState(true);
 								dispatch(playTrack(track.track.id));
 							}}
-							//onClick={() => playTrack(track.track.id)}
-							// onClick={() => {
-							// 	window.open(track.track.preview_url);
-							// }}
 						>
 							<td>{index + 1}</td>
 

@@ -38,7 +38,7 @@ const Search = () => {
 
 	return (
 		<>
-			<h2>Search any track</h2>
+			<h2>Search for any track</h2>
 			<form onSubmit={handleSearch} className='search-form'>
 				<input
 					type='search'

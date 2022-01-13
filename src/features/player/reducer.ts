@@ -1,9 +1,4 @@
-import {
-	SET_TRACK_SUCCESS,
-	SET_TRACK_ERROR,
-	PLAY_TRACK_SUCCESS,
-	PLAY_TRACK_ERROR,
-} from './types';
+import { SET_TRACK_SUCCESS, SET_TRACK_ERROR } from './types';
 import { AnyAction } from 'redux';
 
 export const initialState = {
