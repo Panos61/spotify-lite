@@ -1,13 +1,19 @@
 import './styles/saved.styled.scss';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
-import { useEffect } from 'react';
 import TopArtists from '../components/TopArtists';
 import { getMyTopTracks } from '../features/user-playlists/actions';
+import Player from '../components/Player';
+import { playTrack } from '../features/player/actions';
 
 const Profile = () => {
 	const dispatch = useDispatch();
 
+	// Player state
+	const [showPlayer, setPlayerState] = useState(false);
+
+	// Auth and playlist state
 	const currentUser = useSelector((state: RootState) => state);
 	const myTopTracksSelector = useSelector(
 		(state: RootState) => state.userPlaylists
@@ -17,12 +23,16 @@ const Profile = () => {
 
 	useEffect(() => {
 		dispatch(getMyTopTracks());
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	if (myTopTracksSelector.topPlaylist === 0) return <h3>loading..</h3>;
 
 	return (
 		<>
+			{/* Display player */}
+			{showPlayer === true ? <Player /> : ''}
+
 			{user ? (
 				<div
 					className='saved-top-wrapper'
@@ -73,6 +83,10 @@ const Profile = () => {
 				<div className='profile-cards'>
 					<TopArtists />
 				</div>
+				<div style={{ marginTop: '3vh', marginBottom: '2vh' }}>
+					<h2>Top tracks this month</h2>
+					<span style={{ fontSize: '12px' }}>Only visible to you</span>
+				</div>
 				<table id='saved-list-table'>
 					<tr className='saved-list-table-title'>
 						<th className='saved-list-table-index'>#</th>
@@ -80,10 +94,16 @@ const Profile = () => {
 						<th className='saved-list-table-album'>ALBUM</th>
 						<th className='saved-list-table-date'>DATE ADDED</th>
 					</tr>
-					{/* 
+
 					{myTopTracksSelector &&
 						myTopTracksSelector?.topPlaylist.map((item: any, index: number) => (
-							<tr className='saved-list-table-card'>
+							<tr
+								className='saved-list-table-card'
+								onClick={() => {
+									setPlayerState(true);
+									dispatch(playTrack(item.id));
+								}}
+							>
 								<td>{index + 1}</td>
 								<td>
 									<div style={{ display: 'flex', gap: '10px' }}>
@@ -92,14 +112,23 @@ const Profile = () => {
 											width={'35px'}
 											alt='img'
 										/>{' '}
-										{item.item.name}
+										{item.name}
 									</div>
 								</td>
-								<td>{item.item.name}</td>
+								<td>{item.name}</td>
 
-								<td>{item.item.duration_ms}</td>
+								<td
+									style={{
+										position: 'absolute',
+										fontWeight: '400',
+										fontSize: '15px',
+										color: '#B2B3B2',
+									}}
+								>
+									{new Date(item.duration_ms).toISOString().substring(15, 19)}
+								</td>
 							</tr>
-						))} */}
+						))}
 				</table>
 			</div>
 		</>

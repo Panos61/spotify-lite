@@ -48,7 +48,7 @@ export const userPlaylists = (state = initialState, action: AnyAction) => {
 		case GET_TOP_TRACKS_SUCCESS:
 			return {
 				...state,
-				topPlaylist: action.payload.topPlaylist,
+				topPlaylist: action.payload.items,
 			};
 
 		case GET_RECENTLY_PLAYED_ERROR:
