@@ -18,6 +18,7 @@ const SavedList = () => {
 
 	useEffect(() => {
 		dispatch(getSavedTracks());
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	if (savedTracksSelector.playlist === 0) return <h5>loading..</h5>;
@@ -63,7 +64,14 @@ const SavedList = () => {
 									addSuffix: true,
 								})}
 							</td>
-							<td>
+							<td
+								style={{
+									position: 'absolute',
+									fontWeight: '400',
+									fontSize: '15px',
+									color: '#B2B3B2',
+								}}
+							>
 								{new Date(track.track.duration_ms)
 									.toISOString()
 									.substring(15, 19)}
