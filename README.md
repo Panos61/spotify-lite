@@ -1,3 +1,12 @@
+### Spotify lite
+
+- App is deployed with netlify.
+- React (CRA) project written with TypeScript. The access_key is saved in Firebase DB. 
+- Due to the API limitations, only one user can login configuring his/her spotify credentials.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
