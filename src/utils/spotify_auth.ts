@@ -16,7 +16,9 @@ import { db } from '../firebase';
 // We need the auth URL in order to get the access token.
 export const authEndpoint: string = 'https://accounts.spotify.com/authorize';
 
-const redirectUri: string = 'http://localhost:3000';
+//const redirectUri: string = 'http://localhost:3000';
+const redirectUri: string = '/';
+
 const clientId: string = '7e388c936f1549c48057717be6380992';
 
 // Scopes/Permissions
