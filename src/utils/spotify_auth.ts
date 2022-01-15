@@ -17,7 +17,7 @@ import { db } from '../firebase';
 export const authEndpoint: string = 'https://accounts.spotify.com/authorize';
 
 //const redirectUri: string = 'http://localhost:3000';
-const redirectUri: string = '/';
+const redirectUri: string = 'https://spotify-lite-app.netlify.app/';
 
 const clientId: string = '7e388c936f1549c48057717be6380992';
 
