@@ -1,18 +1,18 @@
-### Spotify lite
+# Spotify lite
 
 - App is deployed with netlify.
 - React (CRA) project written in TypeScript. The access_key is saved in Firebase DB. 
 - React-Redux comes into use as the main state management tool.
 - !! Due to the API limitations, only one user can login configuring his/her Spotify credentials.
 
-# App use
+### App use
 
 - Can login/logout.
 - Can view recent, top, recommended and more playlists.
 - Can search for any track.
 - Can play a preview of the track. (API limitations). 
 
-# About Spotify Authorization
+### About Spotify Authorization
 
 Through the Spotify Web API, external applications retrieve Spotify content such as album data and playlists. To access user-related data through the Web API, an application must be authorized by the user to access that particular information. We need to make use of the [scopes](https://developer.spotify.com/documentation/general/guides/authorization/scopes/) which provide Spotify users using third-party apps the confidence that only the information they choose to share will be shared. Below we can see an example of how scopes are used in this project:
 
@@ -29,7 +29,7 @@ Also, Spotify provides us a Client ID key and a Client Secret key which can be f
 
 You can read a more detailed documentation about Spotify's Authorization flow [here](https://developer.spotify.com/documentation/general/guides/authorization/client-credentials/).
 
-# Code documentation
+### Code documentation
 
 At first, user is required to login. Basically, that means that he must be redirected to a page in which he/she must agree with the possible use of his/her content by third-party apps. 
 ``` typescript 
@@ -106,6 +106,6 @@ export const setAccessToken = async () => {
 };
 ```
 
-##Let's say the user is now authenticated and authorized. What happens next? How do we get the Spotify data? How is the data properly managed for the whole time of the active user session?
+####Let's say the user is now authenticated and authorized. What happens next? How do we get the Spotify data? How is the data properly managed for the whole time of the active user session?
 
 
