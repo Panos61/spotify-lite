@@ -12,6 +12,8 @@
 - Can search for any track.
 - Can play a preview of the track. (API limitations). 
 
+https://user-images.githubusercontent.com/53904733/150137178-d50c1ea1-f93a-4a07-8bd7-ff83a726e715.mp4
+
 ### About Spotify Authorization
 
 Through the Spotify Web API, external applications retrieve Spotify content such as album data and playlists. To access user-related data through the Web API, an application must be authorized by the user to access that particular information. We need to make use of the [scopes](https://developer.spotify.com/documentation/general/guides/authorization/scopes/) which provide Spotify users using third-party apps the confidence that only the information they choose to share will be shared. Below we can see an example of how scopes are used in this project:
@@ -106,6 +108,117 @@ export const setAccessToken = async () => {
 };
 ```
 
-####Let's say the user is now authenticated and authorized. What happens next? How do we get the Spotify data? How is the data properly managed for the whole time of the active user session?
+ > **Let's say that the user is now authenticated and authorized. What happens next? How do we get the Spotify data? How is the data properly managed for the whole time of the active user session?**
+
+First of all, the https://www.npmjs.com/package/spotify-web-api-js library comes into use. I use this library to fetch the data we need from the Spotify API. But how does this happens? Well, check the code block below.At first we set an usable instance of the SpotifyWebApi.
+
+```typescript
+import SpotifyWebApi from 'spotify-web-api-js';
+
+const spotifyApi = new SpotifyWebApi();
+```
+
+ In this example below, I want to get my saved tracks from the API. To be authorized, I used the * *setAccessToken()* * function. But what all of the rest code is about? It's a [React-Redux](https://react-redux.js.org/) action file in which we use the Spotify API that we set above. I won't go in an in-depth analysis of the React-Redux library now.
+
+```typescript
+export const getSavedTracks = () => {
+	return async (dispatch: any) => {
+		try {
+			await setAccessToken();
+
+			spotifyApi.getMySavedTracks().then((tracks) => {
+				dispatch({ type: GET_SAVED_TRACKS_SUCCESS, payload: tracks });
+				console.log('Tracks', tracks);
+			});
+		} catch (error) {
+			dispatch({
+				type: GET_SAVED_TRACKS_ERROR,
+				payload: JSON.stringify(error),
+			});
+		}
+	};
+};
+```
+
+> How is the data managed?
+Data is managed with the help of the React-Redux reducers.
+
+```typescript
+export const initialState = {
+	playlist: [],
+	playlists: [],
+};
+
+export const library = (state = initialState, action: AnyAction) => {
+	switch (action.type) {
+		case GET_SAVED_TRACKS_SUCCESS:
+			return {
+				...state,
+				playlist: action.payload.items,
+			};
+		case GET_SAVED_PLAYLISTS_SUCCESS:
+			return {
+				...state,
+				playlists: action.payload.items,
+			};
+		case GET_SAVED_TRACKS_ERROR:
+			return {
+				...state,
+				playlist: action.payload,
+			};
+		case GET_SAVED_PLAYLISTS_ERROR:
+			return {
+				...state,
+				playlists: action.payload,
+			};
+		default:
+			return state;
+	}
+};
+```
+which is also set in the main redux store.ts file.
+
+>How is data rendered in a React component?
+Below, you can see a code example of how we render/display the data inside a React component.
+
+```typescript
+const Categories: React.FC = () => {
+	const dispatch = useDispatch();
+	const newReleasesSelector = useSelector(
+		(state: RootState) => state.userPlaylists
+	);
+
+	useEffect(() => {
+		dispatch(getnewAlbums());
+	}, []);
+
+	if (newReleasesSelector.albums.items === 0) {
+		return (
+			<div>
+				<h3>Loading..</h3>
+			</div>
+		);
+	}
+
+	return (
+		newReleasesSelector &&
+		newReleasesSelector?.albums.map((item: any) => (
+			<CategoryCard item={item} key={item.id} />
+		))
+	);
+};
+
+export default Categories;
+```
+
+** These are the basic code examples of this project. Definitely it is not the best documentation I could write! **
+
+### License
+[GNU GPLv3] (https://www.gnu.org/licenses/gpl-3.0.html)
+
+
+
+
+
 
 
