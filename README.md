@@ -81,7 +81,7 @@ export const storeToken = async () => {
 	}
 };
 ```
-In order to be able to easily use the access key on every spotify call, the setAccessToken comes into use .
+In order to be able to easily use the access key on every spotify call, the * *setAccessToken() * * function comes into use .
 ```typescript
 // Set access token
 export const setAccessToken = async () => {
