@@ -214,7 +214,7 @@ export default Categories;
 ** These are the basic code examples of this project. Definitely it is not the best documentation I could write! **
 
 ### License
-[GNU GPLv3] (https://www.gnu.org/licenses/gpl-3.0.html)
+[GNU GPLv3](https://www.gnu.org/licenses/gpl-3.0.html)
 
 
 
