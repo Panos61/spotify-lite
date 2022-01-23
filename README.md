@@ -33,13 +33,13 @@ You can read a more detailed documentation about Spotify's Authorization flow [h
 
 ### Code documentation
 
-At first, user is required to login. Basically, that means that he must be redirected to a page in which he/she must agree with the possible use of his/her content by third-party apps. 
+At first, the user is required to login meaning that the user must be redirected to a page in which he/she must agree with the possible use of his/her content by third-party apps. 
 ``` typescript 
 export const loginUrl = `${authEndpoint}?client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join(
 	'%20'
 )}&response_type=token&show_dialog=true`;
 ```
-By clicking the Agree button, Spotify API returns an uri which contains contains the access_key, type of token and expires_in values. We cut and take these values from the uri and we store them at Firebase DB. The access_key value is important in order to be authorized during every Spotify API call afterwards.
+By clicking the Agree button, Spotify API returns an uri which contains the access_key, type of token and expires_in values. We cut and take these values from the uri and we store them at Firebase DB. The access_key value is important in order to be authorized during every Spotify API call afterwards.
 
 ```typescript
 // Get access_token part from the url.
@@ -81,7 +81,7 @@ export const storeToken = async () => {
 	}
 };
 ```
-In order to be able to easily use the access key on every spotify call, the * *setAccessToken() * * function comes into use .
+In order to be able to easily use the access key on every spotify call, the *setAccessToken()* function comes into use .
 ```typescript
 // Set access token
 export const setAccessToken = async () => {
@@ -110,7 +110,7 @@ export const setAccessToken = async () => {
 
  > **Let's say that the user is now authenticated and authorized. What happens next? How do we get the Spotify data? How is the data properly managed for the whole time of the active user session?**
 
-First of all, the https://www.npmjs.com/package/spotify-web-api-js library comes into use. I use this library to fetch the data we need from the Spotify API. But how does this happens? Well, check the code block below.At first we set an usable instance of the SpotifyWebApi.
+First of all, the https://www.npmjs.com/package/spotify-web-api-js library comes into use. I used this library to fetch the data we need from the Spotify API. But how does this happens? Well, check the code block below. At first, we set an usable instance of the SpotifyWebApi.
 
 ```typescript
 import SpotifyWebApi from 'spotify-web-api-js';
@@ -118,7 +118,7 @@ import SpotifyWebApi from 'spotify-web-api-js';
 const spotifyApi = new SpotifyWebApi();
 ```
 
- In this example below, I want to get my saved tracks from the API. To be authorized, I used the * *setAccessToken()* * function. But what all of the rest code is about? It's a [React-Redux](https://react-redux.js.org/) action file in which we use the Spotify API that we set above. I won't go in an in-depth analysis of the React-Redux library now.
+ In this example below, I want to get my saved tracks from the API. In order to be authorized, I used the *setAccessToken()* function. But what all of the rest of the code is about? It is a [React-Redux](https://react-redux.js.org/) action file in which we use the Spotify API that we set above. I won't go in an in-depth analysis of the React-Redux library now.
 
 ```typescript
 export const getSavedTracks = () => {
